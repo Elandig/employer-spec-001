@@ -194,7 +194,7 @@ function replaceLegacyStyles(style) {
 }
 
 function setCell({ worksheet = [], value, row, column, style = {} }) {
-  worksheet[row] ||= [];
+  worksheet[row] = worksheet[row] || [];
 
   // Для совместимости legacy стилей с новой библиотекой
   style = replaceLegacyStyles(structuredClone(style));
@@ -320,8 +320,8 @@ function buildExport(sheets) {
 
     const ws = excel.utils.aoa_to_sheet(worksheet);
 
-    ws["!cols"] ||= [];
-    ws["!rows"] ||= [];
+    ws["!cols"] = ws["!cols"] || [];
+    ws["!rows"] = ws["!rows"] || [];
 
     // Так как xlsx-js-style округляет до десятых высоту строк, добавляем небольшой margin
     // для корректного отображения. Большинство редакторов вовсе игнорируют эти значения.
