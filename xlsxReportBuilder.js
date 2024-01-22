@@ -1,5 +1,6 @@
 const excel = require("xlsx-js-style");
 const fs = require("fs");
+const v8 = require('v8')
 
 // You can define styles as json object
 const styles = {
@@ -197,7 +198,7 @@ function setCell({ worksheet = [], value, row, column, style = {} }) {
   worksheet[row] = worksheet[row] || [];
 
   // Для совместимости legacy стилей с новой библиотекой
-  style = replaceLegacyStyles(structuredClone(style));
+  style = replaceLegacyStyles(style);
 
   let type = determineType(value);
 
