@@ -1,6 +1,4 @@
 const excel = require("xlsx-js-style");
-const fs = require("fs");
-const v8 = require('v8')
 
 // You can define styles as json object
 const styles = {
